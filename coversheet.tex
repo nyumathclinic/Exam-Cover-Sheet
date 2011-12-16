@@ -1,0 +1,125 @@
+\documentclass{article}
+% Document template for NYU Mathematics Department exams
+%
+% You need the files ``NYUMathematics.png'' and ``NYULogoLarge2597.pdf''.  These can be found here:
+% https://docs.google.com/open?id=0B1nuEJnqnmdzNTM5OTZiNjMtYzY1Ny00MTc3LWE1N2UtY2ViZmY1ZDk4OGI4
+% https://docs.google.com/open?id=0B1nuEJnqnmdzZmM1YjZjYWQtNTA3Ni00NTQxLWI0NGQtZTY3NDhmMDYxZDA5
+%
+\usepackage{tikz}
+\usepackage{helvet}
+\usepackage[letterpaper]{geometry}
+
+
+\makeatletter
+\newcommand{\course}[1]{\newcommand{\@course}{#1}}
+\renewcommand{\maketitle}{
+    \edef\@TITLE{\uppercase{\@title}}
+    {\noindent\titlefont\LARGE \@course \par}
+    {\noindent\titlefont\Huge  \@TITLE \par}
+    \vskip1em
+    {\noindent\titlefont\large \@date \par}
+    \vskip2em
+}
+\makeatother
+
+
+% The official font family of NYU is Gotham.  But to use Gotham requires xetex instead of regular tex, 
+% an operating system that uses TrueType fonts (e.g., Mac, Windows, don't know about unix), and 
+% the Gotham TrueType (.ttf) files.  Gotham is not free.  So to be portable I substituted Helvetica, which at
+% least is sans-serif and works out of the box with regular LaTeX.  
+\renewcommand{\rmdefault}{phv}
+\let\titlefont\normalfont
+
+
+\title{Final Examination}
+\course{MATH-UA 122 Calculus II}
+\date{December 23, 2011}
+
+\begin{document}
+% These place the NYU Mathematics Department logos and the NYU main logo in the corners of the page.
+\begin{tikzpicture}[remember picture, overlay]
+  \definecolor{nyupurple}{HTML}{57068C}
+  \draw (current page.north west) ++ (0.25in,-0.25in) 
+      node[anchor=north west] (logo)
+      {\includegraphics[width=2.5in]{NYUMathematics}};
+  \draw (current page.south west) ++ (0.25in,0.25in) 
+      node[anchor=south west] 
+      {\includegraphics[width=2.5in]{NYULogoLarge2597}};
+\end{tikzpicture}%
+\par\vspace{-0.5in}
+\maketitle
+
+% Update this as you need.
+\noindent\textbf{\uppercase{Table of Lecture Sections}}
+\begin{center}
+\begin{tabular}{|c|c|c|c|l|}
+\hline
+{Section} & \multicolumn{2}{c|}{Meets} & Location & Professor \\\hline\hline
+001 & {MW} 
+         & {02:00pm--03:50pm} 
+            & SILV 710   &  Jun Zhang\\
+\hline
+002 & {MW} 
+         & {02:00pm--03:50pm} 
+            & TISC LC9   &  Alexander Hanhart \\
+\hline
+003 & {MW} 
+         & {02:00pm--03:50pm} 
+            & SILV 501   &  Jianfeng Lu \\
+\hline
+004 & {MW} 
+         & {11:00am--12:50pm} 
+            & SILV 714   &  Nader Masmoudi \\
+\hline
+005 & {TR} 
+         & {11:00am--12:50pm} 
+            & CIWW 202   &  Matthew Leingang\\
+\hline
+006 & {TR} 
+         & {02:00pm--03:50pm} 
+            & SILV 512   &  Fengbo Hang\\
+\hline
+007 & {TR} 
+         & {06:20pm--08:10pm} 
+            & MEYR 122   &  Maria Vucelja \\
+\hline
+008 & {MW} 
+         & {11:00am--12:50pm} 
+            & WAVE 370   &  Xianpeng Hu \\
+\hline
+\end{tabular}
+\end{center}
+
+% signature, ID, scary legalese
+\dimen0\textwidth%
+\advance\dimen0 by -2em
+\noindent\fbox{\parbox{\textwidth}{
+\hspace{1em}%
+\begin{minipage}{\the\dimen0}
+\rule{0pt}{1cm}Name:~\hrulefill~Section\#:~\rule{0.5in}{0.4pt}~N\#:~\rule{1in}{0.4pt}
+
+\bigskip
+I pledge that the work on this exam is entirely my own.
+I understand that the penalties for cheating may include an F in the course and referral to my Dean for further action.
+I acknowledge that this exam is my final opportunity to demonstrate my knowledge of the course material.
+\\[0.5in]
+Student Signature: \rule{4in}{0.4pt}
+\end{minipage}}}
+\bigskip
+
+% instructions -- change as necessary.
+\noindent\textbf{\uppercase{Fill out your name and ID number (without the N) on your Scantron$^{\textcircled{\tiny R}}$ form.  Your exam is sealed with a label that has a letter and number code.  Bubble in the letter of your code in the``Test Form'' field, and the number of your code in the ``Subj. Score'' field.  Do not remove this label.}}
+
+\noindent{\textbf{\uppercase{READ THE FOLLOWING INFORMATION.}}}
+
+% more instructions -- change as necessary.
+\begin{itemize}
+\item This is a \textbf{100-minute} exam.  It consists of 20 multiple choice problems and four free response problems.
+\item Calculators, books, notes, and other aids are not allowed.
+\item You may use the backs of the pages or the extra pages for scratch work.  \textbf{\emph{Do not unstaple or remove pages as they can be lost in the grading process.}}
+\item Please do not put your name on any page besides the first page.  
+%\item 
+\end{itemize}
+
+\noindent{\textbf{\uppercase{Do not begin this exam until signaled to do so.}}}
+\end{document}
