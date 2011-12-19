@@ -8,6 +8,7 @@
 \usepackage{tikz}
 \usepackage{helvet}
 \usepackage[letterpaper]{geometry}
+\usepackage{ifxetex}
 
 
 \makeatletter
@@ -25,11 +26,41 @@
 
 % The official font family of NYU is Gotham.  But to use Gotham requires xetex instead of regular tex, 
 % an operating system that uses TrueType fonts (e.g., Mac, Windows, don't know about unix), and 
-% the Gotham TrueType (.ttf) files.  Gotham is not free.  So to be portable I substituted Helvetica, which at
-% least is sans-serif and works out of the box with regular LaTeX.  
+% the Gotham TrueType (.ttf) files.  Gotham is not free.  If you have Gotham installed in a place your system
+% can find it, typeset this file with xelatex...
+\ifxetex
+\usepackage{mathtools}
+\usepackage{mathspec}
+% This snippet fixes a "You can't use a prefix with '\begingroup'" error that was coming from
+% the fontspec package.  
+% Thanks to Philippe Goutet.  See \url{http://tex.stackexchange.com/q/5996/1402}.
+\makeatletter
+\def\alloc@#1#2#3#4#5%
+ {\ifnum\count1#1<#4% make sure there's still room
+    \allocationnumber\count1#1
+    \global\advance\count1#1\@ne
+    \global#3#5\allocationnumber
+    \wlog{\string#5=\string#2\the\allocationnumber}%
+  \else\ifnum#1<6
+    \def\etex@dummy@definition{}% <-- code added
+    \begingroup \escapechar\m@ne
+    \expandafter\alloc@@\expandafter{\string#2}#5%
+  \else\errmessage{No room for a new #2}\fi\fi
+ }
+\makeatother
+\usepackage{xltxtra}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[BoldFont=Gotham Narrow Medium]{Gotham Narrow Book}
+\setmathrm{Gotham Book}
+\setmathfont(Latin){Gotham Narrow Book}
+\setmathfont(Digits){Gotham Narrow Light}
+\newfontfamily\titlefont{Gotham}
+\else
+% ...otherwise use regular (pdf)latex. To be portable I substituted Helvetica, which at
+% least is sans-serif and is in most TeX distributions
 \renewcommand{\rmdefault}{phv}
 \let\titlefont\normalfont
-
+\fi
 
 \title{Final Examination}
 \course{MATH-UA 122 Calculus II}
@@ -118,7 +149,6 @@ Student Signature: \rule{4in}{0.4pt}
 \item Calculators, books, notes, and other aids are not allowed.
 \item You may use the backs of the pages or the extra pages for scratch work.  \textbf{\emph{Do not unstaple or remove pages as they can be lost in the grading process.}}
 \item Please do not put your name on any page besides the first page.  
-%\item 
 \end{itemize}
 
 \noindent{\textbf{\uppercase{Do not begin this exam until signaled to do so.}}}
